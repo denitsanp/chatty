@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .vh-100.d-flex.align-items-center.justify-content-center.bg-dark.text-white
+    .text-center
+      h1.mb-3 Welcome to Chatty 👋
+      p.text-body-tertiary.text-white-50.mb-4 What's your username? 
+      form(method="post" action="/chat").mx-auto
+        .mb-3
+          input.form-control.form-control-lg(type="text", placeholder="Username" name="username" required)
+        .d-grid.gap-3
+          button.btn.btn-lg.btn-warning(type="submit") Join Room
+          a.text-warning(href="/register") Don't have a username?
+
+block scripts
+  script(src="/js/chat.js")
+  

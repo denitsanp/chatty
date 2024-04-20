@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .container.mt-5
+    .row.justify-content-md-center
+      .col-md-8
+        .card.border.border-warning.border-3
+          .card-header.bg-warning.d-flex.justify-content-between.align-items-center
+            h5.mb-0 #{roomName}
+            a.btn.btn-danger(href='/logout', role='button') Exit Room
+          .card-body.bg-dark.border.border-warning.border-3.text-warning.overflow-hidden(style="height: 400px; overflow-y: scroll;")
+            #messages-container.overflow-auto.h-100
+          .card-footer.bg-dark
+            form#message-form.border.border-warning.border-1
+              .input-group
+                input#message-input.form-control.bg-dark.border-0.text-secondary(type="text", placeholder="Type your message...", aria-label="Recipient's username", aria-describedby="button-addon2", required)
+                button.btn.btn-lg.btn-outline-warning.border-start-warning.rounded-0(type="submit", id="button-addon2") Send
+
+block scripts
+  script(src="/socket.io/socket.io.js")
+  script(src="/js/chatroom.js")
