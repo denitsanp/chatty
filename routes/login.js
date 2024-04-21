@@ -16,10 +16,12 @@ router.post('/login', (req, res) => {
     const user = users.find(u => u.username.toLowerCase() === username.toLowerCase());
 
     if (user) {
+        req.session.userId = user.id; 
         res.redirect(`/chat?uuid=${encodeURIComponent(user.id)}`);
     } else {
         res.redirect('/?error=usernameDoesNotExist');
     }
 });
+
 
 module.exports = router;

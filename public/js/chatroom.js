@@ -10,16 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   socket.on('chat message', (data) => {
     const messageElement = document.createElement('div');
-    messageElement.classList.add('mb-2', 'rounded-pill', 'p-2', 'w-25');
 
     if (data.username === 'System') {
-      messageElement.classList.add('text-secondary', 'm-auto'); 
+      messageElement.classList.add('text-secondary', 'm-auto', 'w-100', 'text-center'); 
       messageElement.textContent = `${data.msg}`; 
-      if (data.uuid === uuid) {
-        messageElement.classList.add('bg-primary', 'text-white', 'float-end');
-      }
+  
     } else {
-      messageElement.classList.add('bg-primary', 'text-white');
+      messageElement.classList.add('bg-primary', 'text-white', 'mb-2', 'rounded-pill', 'p-2', 'w-25');
       messageElement.textContent = `${data.username}: ${data.msg}`;
     }
 
@@ -32,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const message = messageInput.value;
     socket.emit('chat message', message); 
     messageInput.value = ''; 
-  });
+  }); 
 
   if (uuid) {
     socket.emit('new user', uuid);

@@ -35,6 +35,8 @@ router.post('/', (req, res) => {
             };
             users.push(newUser);
             saveUsers(users);
+            req.session.userId = newUser.id;  
+            console.log(`New user registered and logged in: ${username}, Session ID: ${req.sessionID}`); 
             res.redirect('/chat?uuid=' + encodeURIComponent(newUser.id));
         } else {
             res.redirect('/register?error=usernameExists');
@@ -43,5 +45,7 @@ router.post('/', (req, res) => {
         res.redirect('/register?error=invalidUsername');
     }
 });
+
+
 
 module.exports = router;
