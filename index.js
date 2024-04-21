@@ -43,7 +43,8 @@ io.on('connection', (socket) => {
         if (user) {
             userConnections.set(socket.id, uuid);
             console.log(`${user.username} (userID:${uuid}) has joined the chat`);
-            const time = moment().tz('Europe/Helsinki').format('HH:mm');
+            const timeZone = process.env.TIMEZONE || 'Europe/Helsinki'; 
+            const time = moment().tz(timeZone).format('HH:mm');
             io.emit('chat message', { username: 'System', msg: `${user.username} has joined the chat ${time}` });
         }
     });
