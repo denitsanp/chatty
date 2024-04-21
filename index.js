@@ -4,6 +4,7 @@ const path = require('path');
 const { Server } = require('socket.io');
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
+const moment = require('moment-timezone');
 
 const app = express();
 const server = http.createServer(app);
@@ -42,8 +43,7 @@ io.on('connection', (socket) => {
         if (user) {
             userConnections.set(socket.id, uuid);
             console.log(`${user.username} (userID:${uuid}) has joined the chat`);
-            const now = new Date();
-            const time = now.toLocaleTimeString('eu-GB', { hour: 'numeric', minute: 'numeric', hour12: false });
+            const time = moment().tz('Europe/Helsinki').format('HH:mm');
             io.emit('chat message', { username: 'System', msg: `${user.username} has joined the chat ${time}` });
         }
     });
