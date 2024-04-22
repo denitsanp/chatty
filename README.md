@@ -1,1 +1,1 @@
-<img width="800" alt="Screenshot 2024-04-22 at 9 06 23" src="https://github.com/denitsanp/chatty/assets/150515604/28b87585-b56c-4a74-ad22-47cd2c7b8d30">
+<img width="594" alt="Screenshot 2024-04-22 at 9 07 23" src="https://github.com/denitsanp/chatty/assets/150515604/5343cc83-d399-4bed-9a51-e859adfe1066">
